@@ -4,17 +4,12 @@ import connectDB from "@/lib/db";
 import Message from "@/models/Message";
 import Conversation from "@/models/Conversation";
 
-// Define the type for the dynamic params
-type DynamicParams = {
-  params: {
-    id: string; // Must match the segment name [id]
-  };
-};
-
-export async function GET(request: NextRequest, context: DynamicParams) {
+export async function GET(request: NextRequest, context: any) {
   await connectDB();
 
   const { params } = context; // Destructure params from context
+  const { id: conversationId } = params; // Destructure id and rename to conversationId
+
   try {
     const token = request.headers.get("authorization")?.split(" ")[1];
     if (!token) {
@@ -29,7 +24,6 @@ export async function GET(request: NextRequest, context: DynamicParams) {
     } catch (error) {
       return NextResponse.json({ error: "Invalid or expired token" }, { status: 401 });
     }
-    const { id: conversationId } = params;
 
     // Get sorting parameter from query (e.g., ?sort=timestamp)
     const { searchParams } = new URL(request.url);
@@ -46,10 +40,12 @@ export async function GET(request: NextRequest, context: DynamicParams) {
   }
 }
 
-export async function POST(request: NextRequest, context: DynamicParams) {
+export async function POST(request: NextRequest, context: any) {
   await connectDB();
 
   const { params } = context; // Destructure params from context
+  const { id: conversationId } = params; // Destructure id and rename to conversationId
+
   try {
     const token = request.headers.get("authorization")?.split(" ")[1];
     if (!token) {
@@ -65,7 +61,7 @@ export async function POST(request: NextRequest, context: DynamicParams) {
     } catch (error) {
       return NextResponse.json({ error: "Invalid or expired token" }, { status: 401 });
     }
-    const { id: conversationId } = params;
+
     const { content, attachment } = await request.json();
 
     if (!content && !attachment) {
