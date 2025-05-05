@@ -1,0 +1,8 @@
+.avatar {
+  background-image: url(https://c.animaapp.com/56blWVMe/img/type-image--size-xl--online-indicator-none@2x.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  border-radius: 200px;
+  height: 56px;
+  width: 56px;
+}

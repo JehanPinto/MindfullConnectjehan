@@ -1,0 +1,71 @@
+.header {
+  background-color: #e1f3fd;
+  height: 122px;
+  width: 1280px;
+}
+
+.header .navigation-new {
+  align-items: center;
+  display: flex;
+  gap: 45px;
+  left: 108px;
+  position: relative;
+  top: 19px;
+  width: 1064px;
+}
+
+.header .estelle-darcy {
+  height: 84px;
+  position: relative;
+  width: 90px;
+}
+
+.header .navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 617px;
+}
+
+.header .text-wrapper {
+  color: #000000;
+  font-family: "Lato", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 30px;
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.header .div {
+  color: #000000;
+  font-family: var(--body-text-font-family);
+  font-size: var(--body-text-font-size);
+  font-style: var(--body-text-font-style);
+  font-weight: var(--body-text-font-weight);
+  letter-spacing: var(--body-text-letter-spacing);
+  line-height: var(--body-text-line-height);
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.header .avatar-instance {
+  background-image: url(https://c.animaapp.com/56blWVMe/img/avatar@2x.png) !important;
+  border: 2px solid !important;
+  border-color: var(--neutral-50) !important;
+  height: 60px !important;
+  position: relative !important;
+  width: 60px !important;
+}
+
+.header .icon-bell {
+  height: 46.57px;
+  position: relative;
+  width: 33px;
+}
