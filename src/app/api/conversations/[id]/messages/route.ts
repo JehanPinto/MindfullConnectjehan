@@ -4,13 +4,10 @@ import connectDB from "@/lib/db";
 import Message from "@/models/Message";
 import Conversation from "@/models/Conversation";
 
-interface RouteParams {
-  params: {
-    id: string;
-  };
-}
-
-export async function GET(request: NextRequest, { params }: RouteParams) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } } // Inline type matching the dynamic segment [id]
+) {
   await connectDB();
 
   try {
@@ -29,14 +26,25 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     }
     const { id: conversationId } = params;
 
-    const messages = await Message.find({ conversationId }).populate("sender", "fullName");
+    // Get sorting parameter from query (e.g., ?sort=timestamp)
+    const { searchParams } = new URL(request.url);
+    const sort = searchParams.get("sort") || "timestamp"; // Default to timestamp
+    const sortOrder = searchParams.get("order") || "asc"; // Default to ascending
+
+    const messages = await Message.find({ conversationId })
+      .populate("sender", "fullName")
+      .sort({ [sort]: sortOrder === "asc" ? 1 : -1 });
+
     return NextResponse.json({ messages });
   } catch (error) {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
 
-export async function POST(request: NextRequest, { params }: RouteParams) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: { id: string } } // Inline type matching the dynamic segment [id]
+) {
   await connectDB();
 
   try {
