@@ -1,11 +1,11 @@
-import AdminDashboard from "./AdminDashboard";
+// import AdminDashboard from "./AdminDashboard";
 
-const AdminPage = () => {
-    return (
-        <div className="bg-[#E6EFF5] min-h-screen">
-            <AdminDashboard />
-        </div>
-    );
-};
+// const AdminPage = () => {
+//     return (
+//         <div className="bg-[#E6EFF5] min-h-screen">
+//             <AdminDashboard />
+//         </div>
+//     );
+// };
 
-export default AdminPage;
+// export default AdminPage;
