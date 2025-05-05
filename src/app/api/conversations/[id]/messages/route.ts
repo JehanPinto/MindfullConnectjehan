@@ -4,12 +4,17 @@ import connectDB from "@/lib/db";
 import Message from "@/models/Message";
 import Conversation from "@/models/Conversation";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } } // Inline type matching the dynamic segment [id]
-) {
+// Define the type for the dynamic params
+type DynamicParams = {
+  params: {
+    id: string; // Must match the segment name [id]
+  };
+};
+
+export async function GET(request: NextRequest, context: DynamicParams) {
   await connectDB();
 
+  const { params } = context; // Destructure params from context
   try {
     const token = request.headers.get("authorization")?.split(" ")[1];
     if (!token) {
@@ -41,12 +46,10 @@ export async function GET(
   }
 }
 
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } } // Inline type matching the dynamic segment [id]
-) {
+export async function POST(request: NextRequest, context: DynamicParams) {
   await connectDB();
 
+  const { params } = context; // Destructure params from context
   try {
     const token = request.headers.get("authorization")?.split(" ")[1];
     if (!token) {
