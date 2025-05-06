@@ -8,7 +8,7 @@ export async function GET(request: NextRequest, context: any) {
   await connectDB();
 
   const { params } = context;
-  const { conversationId } = params;
+  const { conversationId } = await params;
 
   try {
     const token = request.headers.get('authorization')?.split(' ')[1];
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest, context: any) {
   await connectDB();
 
   const { params } = context;
-  const { conversationId } = params;
+  const { conversationId } = await params;
 
   try {
     const token = request.headers.get('authorization')?.split(' ')[1];
