@@ -8,7 +8,7 @@ import { ProfileSidebar } from "@/app/components/ProfileSidebar";
 import { useAuth } from "@/context/AuthContext";
 import { Conversation } from "@/app/components/types";
 
-export const ChatLayout: React.FC = () => {
+export default function ChatInterface() {
   const { user, token, isLoading } = useAuth();
   const router = useRouter();
   const [conversations, setConversations] = useState<Conversation[]>([]);
@@ -193,6 +193,4 @@ export const ChatLayout: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default ChatLayout;
+}
