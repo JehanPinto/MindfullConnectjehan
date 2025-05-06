@@ -40,7 +40,7 @@ export default function ChatInterface() {
 
     if (!user || !token) {
       console.log("User or token is null, redirecting to login...");
-      router.push("/login");
+      router.push("/register");
     }
   }, [user, token, isLoading, router]);
 
