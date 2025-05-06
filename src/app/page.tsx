@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import ChatInterface from "./chatinterface/page";
 
 export default function Home() {
   const { user, token } = useAuth();
@@ -19,6 +20,7 @@ export default function Home() {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <p>Redirecting...</p>
+      <ChatInterface/>
     </div>
   );
 }
