@@ -1,10 +1,4 @@
-import { ReactNode } from "react";
-
-interface StaticLayoutProps {
-    children: ReactNode;
-}
-
-export default function ContactUs({ children }: StaticLayoutProps) {
+export default function ContactUs() {
     return (
         <div className="min-h-screen flex flex-col items-center ml-20 py-10 bg-[#E1F3FD]">
             <h1 className="text-[64px] font-bold text-[#1045A1] font-inter text-center">
@@ -25,11 +19,7 @@ export default function ContactUs({ children }: StaticLayoutProps) {
             <button className="w-[374px] h-[77px] rounded-[48px] bg-[#70C6E6] text-[24px] font-montserrat font-medium text-[#121111] mt-10">
                 Contact Us
             </button>
-            <div className="w-full max-w-7xl flex flex-wrap items-center justify-between relative">
-                {children}
-                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 md:w-3/7 flex justify-end mt-12 md:mt-0">
-                </div>
-            </div>
+            {/* Removed children and unnecessary div */}
         </div>
     );
 }
