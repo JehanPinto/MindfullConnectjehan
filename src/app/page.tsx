@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!user || !token) {
-      router.push("/login");
+      router.push("/register");
     } else {
       router.push("/chatinterface");
     }
