@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../components/sidebar";
+
 import Header from "../components/Header";
 import StatsCard from "../components/StatsCard";
 import Graph from "../components/Graph";
@@ -10,7 +10,7 @@ import PieChart from "../components/PieChart";
 const Dashboard: React.FC = () => {
   return (
     <div className="flex bg-gray-100 min-h-screen">
-      <Sidebar />
+      
       <div className="flex-1 p-6 ml-64">
         <Header />
         <div className="grid grid-cols-3 gap-4 mt-6">
