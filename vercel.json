@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ],
+  "env": {
+    "MY_API_KEY": "@my-api-key"
+  }
+}
