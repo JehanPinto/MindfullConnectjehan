@@ -9,6 +9,9 @@ import Conversation from '@/models/Conversation';
 export async function GET(request: NextRequest, { params }: { params: { conversationId: string } }) {
   await connectDB();
 
+
+  const { conversationId } = await params;
+
   try {
     const token = request.headers.get('authorization')?.split(' ')[1];
     if (!token) {
@@ -23,7 +26,7 @@ export async function GET(request: NextRequest, { params }: { params: { conversa
     } catch (error) {
       return NextResponse.json({ error: "Invalid or expired token" }, { status: 401 });
     }
-    const { conversationId } = params;
+   
 
     const messages = await Message.find({ conversationId }).populate('sender', 'fullName');
     return NextResponse.json({ messages });
@@ -34,6 +37,8 @@ export async function GET(request: NextRequest, { params }: { params: { conversa
 
 export async function POST(request: NextRequest, { params }: { params: { conversationId: string } }) {
   await connectDB();
+
+  const { conversationId } = await params;
 
   try {
     const token = request.headers.get('authorization')?.split(' ')[1];
@@ -50,7 +55,7 @@ export async function POST(request: NextRequest, { params }: { params: { convers
     } catch (error) {
       return NextResponse.json({ error: "Invalid or expired token" }, { status: 401 });
     }
-    const { conversationId } = params;
+    
     const { content, attachment } = await request.json();
 
     if (!content && !attachment) {
