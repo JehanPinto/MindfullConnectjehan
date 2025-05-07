@@ -257,7 +257,7 @@ export const ChatMain: React.FC<ChatMainProps> = ({
                 className="flex gap-2.0 items-center self-stretch p-3 my-auto w-10 h-10 bg-indigo-100 rounded-2xl"
               >
                 <img
-                  src="/send_fill.svg"
+                  src="/Send_fill.svg"
                   className="object-contain self-stretch my-auto w-4 aspect-square"
                   alt="Send"
                 />
