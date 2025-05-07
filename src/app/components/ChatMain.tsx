@@ -162,7 +162,7 @@ export const ChatMain: React.FC<ChatMainProps> = ({
                 {onBack && (
                   <button onClick={onBack} className="sm:hidden mr-2">
                     <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/back-arrow-icon-url?placeholderIfAbsent=true&apiKey=your-api-key"
+                      src="\Back.svg"
                       className="object-contain w-6 aspect-square"
                       alt="Back"
                     />
@@ -208,7 +208,7 @@ export const ChatMain: React.FC<ChatMainProps> = ({
             <div className="relative flex-1">
             <section
                 ref={messagesContainerRef}
-                className="mt-8 w-full bg-white rounded-xl overflow-y-auto max-h-[400px] min-h-[400px]"
+                className="mt-1 w-full bg-white rounded-xl overflow-y-auto max-h-[400px] min-h-[400px]"
               >
                 {messages.map((message) => (
                   <ChatMessage key={message.id} message={message} />
@@ -252,10 +252,10 @@ export const ChatMain: React.FC<ChatMainProps> = ({
               </div>
               <button
                 onClick={handleSendMessage}
-                className="flex gap-2.5 items-center self-stretch p-3 my-auto w-10 h-10 bg-blue-900 rounded-lg"
+                className="flex gap-2.0 items-center self-stretch p-3 my-auto w-10 h-10 bg-indigo-100 rounded-2xl"
               >
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f38d43167fc382dbd85341e1ce5fe591b8369?placeholderIfAbsent=true&apiKey=fd0c2c04ade54c2997bae3153b14309c"
+                  src="/send_fill.svg"
                   className="object-contain self-stretch my-auto w-4 aspect-square"
                   alt="Send"
                 />
