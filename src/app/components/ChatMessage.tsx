@@ -3,13 +3,22 @@ import { ChatMessage as ChatMessageType } from "./types";
 
 interface ChatMessageProps {
   message: ChatMessageType;
+  isNew?: boolean;
 }
 
-export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
+export const ChatMessage: React.FC<ChatMessageProps> = ({ message, isNew = false }) => {
   const isSender = message.sender === "user";
 
   return (
-    <div className={`flex ${isSender ? "justify-end" : "justify-start"} mb-4`}>
+    <div
+      className={`flex ${isSender ? "justify-end" : "justify-start"} mb-4 ${
+        isNew
+          ? isSender
+            ? "animate-slideInFromRight"
+            : "animate-slideInFromLeft"
+          : ""
+      }`}
+    >
       <article
         className={`flex flex-col ${
           isSender ? "items-end" : "items-start"

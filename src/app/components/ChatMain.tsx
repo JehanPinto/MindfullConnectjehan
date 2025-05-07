@@ -11,7 +11,7 @@ interface ChatMainProps {
   conversation?: Conversation;
   onToggleProfileSidebar: () => void;
   fetchConversations: () => Promise<void>;
-  onBack?: () => void; // Add onBack prop
+  onBack?: () => void;
   className?: string;
 }
 
@@ -25,7 +25,7 @@ export const ChatMain: React.FC<ChatMainProps> = ({
   onBack,
   className,
 }) => {
-  const [messages, setMessages] = useState<ChatMessageType[]>([]);
+  const [messages, setMessages] = useState<(ChatMessageType & { isNew?: boolean })[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const [isScrolledUp, setIsScrolledUp] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -73,6 +73,7 @@ export const ChatMain: React.FC<ChatMainProps> = ({
             }),
             sender: msg.sender._id === user?._id ? "user" : "other",
             attachment: msg.attachment,
+            isNew: false, // Existing messages are not new
           }))
         );
       } else {
@@ -126,6 +127,7 @@ export const ChatMain: React.FC<ChatMainProps> = ({
             }),
             sender: "user",
             attachment: message.attachment,
+            isNew: true, // Mark the new message for animation
           },
         ]);
         fetchConversations();
@@ -206,12 +208,12 @@ export const ChatMain: React.FC<ChatMainProps> = ({
             </header>
 
             <div className="relative flex-1">
-            <section
+              <section
                 ref={messagesContainerRef}
                 className="mt-1 w-full bg-white rounded-xl overflow-y-auto max-h-[400px] min-h-[400px]"
               >
                 {messages.map((message) => (
-                  <ChatMessage key={message.id} message={message} />
+                  <ChatMessage key={message.id} message={message} isNew={message.isNew || false} />
                 ))}
                 <div ref={messagesEndRef} />
               </section>
