@@ -207,10 +207,10 @@ export const ChatMain: React.FC<ChatMainProps> = ({
               </div>
             </header>
 
-            <div className="relative flex-1">
+            <div className="relative flex-1 h-full">
               <section
                 ref={messagesContainerRef}
-                className="mt-1 w-full bg-white rounded-xl overflow-y-auto max-h-[400px] min-h-[400px]"
+                className="mt-1 w-full h-full bg-white rounded-xl overflow-y-auto max-h-[478px] min-h-[400px]"
               >
                 {messages.map((message) => (
                   <ChatMessage key={message.id} message={message} isNew={message.isNew || false} />
